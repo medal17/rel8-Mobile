@@ -1,9 +1,11 @@
 import { View, Text, FlatList } from 'react-native'
 import React from 'react'
+import tw from 'tailwind-react-native-classnames'
+import Ionicon from 'react-native-vector-icons/Ionicons'
 import ChatsCard from '../../components/chat/ChatsCard'
 import ChatList from '../../components/chat/ChatList'
 
-const Private = () => {
+const Private = ({navigation}) => {
     const data =[
         {id:1,name: 'Ayinde Micheal ', time:'07:00', message:'Lorem ipsum dolor sit amet, dolor sit amet,,', picture:require('../../images/onboarding/phone.png')},
         {id:2,name: 'Ayinde Micheal ', time:'07:00', message:'Lorem ipsum dolor sit amet, dolor sit amet,,', picture:require('../../images/onboarding/phone.png')},
@@ -16,11 +18,10 @@ const Private = () => {
         
       ]
   return (
-    <View>
-        <View style={tw`flex-row justify-between pt-4`}>
-            <Ionicon  name='menu' size={34}/>
-            <Text  style={tw`my-auto px-4`}>Welcome Rasheed</Text>
-            <Ionicon name='notifications' size={28} color='purple'/>
+    <View style={tw`bg-white`}>
+        <View style={tw`flex-row  px-2 py-2 bg-purple-100 rounded-lg mx-5 my-2`}>
+            <Ionicon  name='search' style={tw`text-gray-500`} size={24}/>
+            <Text  style={tw`my-auto px-4 text-gray-500`}>Search</Text>
           </View>
       <FlatList
             data={data}
@@ -30,10 +31,11 @@ const Private = () => {
             renderItem={
                 ({item}) => (
             <ChatList 
-                    name={item.name}
-                    image={item.picture}
-                    message={item.message}
-                    time={item.time}
+              name={item.name}
+              image={item.picture}
+              message={item.message}
+              time={item.time}
+              navigation={navigation}
             />   
                 )}
         />

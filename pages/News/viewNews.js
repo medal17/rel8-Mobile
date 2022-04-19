@@ -1,14 +1,27 @@
-import { View, Text, ScrollView, Image } from 'react-native'
+import { View, SafeAreaView,Text, ScrollView, Image } from 'react-native'
 import React from 'react'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import tw from 'tailwind-react-native-classnames'
+import Ionicon from 'react-native-vector-icons/Ionicons'
 import CommentCard from '../../components/News/CommentCard'
 import WriteCommentCard from '../../components/News/WriteCommentCard'
+import TobBar from '../../components/topBar'
 
 const ViewNews = () => {
   return (
+    <SafeAreaView>
+      <TobBar
+        body={
+          <View style={tw`flex-row justify-between px-3`}>
+            <Ionicon name='ios-chevron-back' onPress={()=>navigation.goBack()} size={30}/>
+            <Text style={tw`my-auto font-bold text-base`}>News</Text>
+            <Ionicon name='md-notifications' style={tw`text-purple-800`} size={30}/>
+          </View>
+        }
+        />
     <ScrollView style={tw`h-full`}>
+      
         <View style={tw`h-60 p-3`}>
             <Image  
             resizeMode='cover'
@@ -55,6 +68,7 @@ const ViewNews = () => {
         
       
     </ScrollView>
+    </SafeAreaView>
   )
 }
 

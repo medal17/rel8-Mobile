@@ -1,9 +1,10 @@
-import { View, Text, FlatList, TextInput, Pressable } from 'react-native'
+import { View, SafeAreaView, Text, FlatList, TextInput, Pressable } from 'react-native'
 import React from 'react'
 import tw from 'tailwind-react-native-classnames'
 import NewsCard from '../../components/News/NewsCard'
 import Feather from 'react-native-vector-icons/Feather'
 import Ionicon from 'react-native-vector-icons/Ionicons'
+import TobBar from '../../components/topBar'
 
 const News = ({navigation}) => {
     const data =[
@@ -14,9 +15,17 @@ const News = ({navigation}) => {
         {id:5,title: 'Lorem ipsum dolor sit amet, ', body:'(Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices varius Mauris ultrices varius.....', picture:require('../../images/onboarding/phone.png')},
       ]
   return (
-    <View style={tw`px-2`}>
-      <Text>index</Text>
-      <View style={tw`flex-row bg-purple-100 my-3 rounded-lg py-2  px-2`}> 
+    <SafeAreaView style={tw`px-2`}>
+      <TobBar
+        body={
+          <View style={tw`flex-row justify-between px-3`}>
+              <Ionicon name='ios-chevron-back' onPress={()=>navigation.goBack()} size={30}/>
+              <Text style={tw`my-auto font-bold text-base`}>News</Text>
+              <Ionicon name='md-notifications' style={tw`text-purple-800`} size={30}/>
+          </View>
+        }
+        />
+      <View style={tw`flex-row mx-4 justify-between bg-purple-100 my-3 rounded-lg py-2  px-2`}> 
         <Ionicon name='ios-search' size={25} style={tw`mr-2`} />
         <TextInput
           placeholder='Search by date'
@@ -43,7 +52,7 @@ const News = ({navigation}) => {
                 //   </Pressable>
                   )}/>
         </View>
-    </View>
+    </SafeAreaView>
   )
 }
 

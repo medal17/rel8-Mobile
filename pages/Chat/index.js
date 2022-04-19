@@ -13,6 +13,8 @@ import MessageField from '../../components/chat/MessageField'
 import General from './General'
 import { StackActions } from '@react-navigation/native';
 import Private from './Private';
+import PrivateSingle from './privateSingle';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 const Chat = ({navigation}) => {
@@ -30,11 +32,11 @@ const Chat = ({navigation}) => {
     }
     
   return (
-    <View style={tw`h-full bg-white px-2`}>
+    <SafeAreaView style={tw`h-full bg-white px-2`}>
         <TobBar
             body={
                 <View style={tw`flex-row justify-between`}>
-                    <Ionicon name='ios-chevron-back' size={30}/>
+                    <Ionicon onPress={()=>navigation.goBack()} name='ios-chevron-back' size={30}/>
                     <Text style={tw`my-auto mx-auto font-bold`}>Chat</Text>
                     <View style={tw`w-12`}></View>
                 </View>
@@ -53,7 +55,7 @@ const Chat = ({navigation}) => {
             </View> */}
         </Stack.Navigator>
       {/* <MessageField/> */}
-    </View>
+    </SafeAreaView>
   )
 }
 
