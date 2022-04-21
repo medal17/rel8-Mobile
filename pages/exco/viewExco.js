@@ -8,19 +8,19 @@ import CommentCard from '../../components/News/CommentCard'
 import WriteCommentCard from '../../components/News/WriteCommentCard'
 import TobBar from '../../components/topBar'
 
-const ViewNews = ({navigation}) => {
+const ViewExco = () => {
   return (
-    <SafeAreaView style={tw`h-full`}>
+    <SafeAreaView>
       <TobBar
         body={
-          <View style={tw`flex-row pb-1 justify-between px-3`}>
+          <View style={tw`flex-row justify-between px-3`}>
             <Ionicon name='ios-chevron-back' onPress={()=>navigation.goBack()} size={30}/>
-            <Text style={tw`my-auto font-bold text-base`}>News</Text>
+            <Text style={tw`my-auto font-bold text-base`}>Publications</Text>
             <Ionicon name='md-notifications' style={tw`text-purple-800`} size={30}/>
           </View>
         }
         />
-    <ScrollView style={tw`h-5/6`}>
+    <ScrollView style={tw`h-full`}>
       
         <View style={tw`h-60 p-3`}>
             <Image  
@@ -36,39 +36,18 @@ const ViewNews = ({navigation}) => {
             scelerisque pellentesque nullam montes, pretium. 
             Nisl, in netus Et lacus lacus, proin proin egestas. 
             Augue scelerisque pellentesque nullam montes,
+             pretium. Nisl, in netus Lorem ipsum dolor sit amet, consectetur adipiscing 
+            elit. Et lacus lacus, proin proin egestas. Augue 
+            scelerisque pellentesque nullam montes, pretium. 
+            Nisl, in netus Et lacus lacus, proin proin egestas. 
+            Augue scelerisque pellentesque nullam montes,
              pretium. Nisl, in netus 
             </Text>
-            <Text style={tw`text-justify text-gray-400 py-1`}>5 Likes</Text>
-
-        <View style={tw`border-t border-b flex-row justify-around border-gray-500 py-2`}>
-          <View style={tw`flex-row pl-5`}>
-            <MaterialIcon name='thumb-up-off-alt' color='purple' size={23}/>
-            <Text style={tw`my-auto px-2`}>Like</Text>
-          </View>
-
-          <View style={tw`flex-row px-5`}>
-            <FontAwesome name='commenting-o' color='purple' size={23}/>
-            <Text style={tw`my-auto px-2`}>Like</Text>
-          </View>
-
-          
-        </View>
-        <View>
-          <CommentCard/>
-          <CommentCard/>
-          <CommentCard/>
-        </View>
-
-        {/* //View More */}
-        <Text style={tw`text-purple-800 font-bold`}>View 3 More Comments</Text>
-        </View>  
-        <View>
-          <WriteCommentCard/>
-        </View>
-        {/* <View style={tw`h-20`}></View> */}
+      </View>
+      
     </ScrollView>
     </SafeAreaView>
   )
 }
 
-export default ViewNews
+export default ViewExco

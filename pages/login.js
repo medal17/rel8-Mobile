@@ -1,4 +1,4 @@
-import { View, Text, Image, TextInput,TouchableOpacity } from 'react-native'
+import { View, SafeAreaView,Text, Image, TextInput,TouchableOpacity } from 'react-native'
 import {useState} from 'react'
 import tw from 'tailwind-react-native-classnames'
 import RoundedButton from '../components/button/RoundedButton'
@@ -42,7 +42,7 @@ const OwingWidget=()=>{
 
 const Login = ({navigation}) => {
   return (
-    <View>
+    <SafeAreaView >
       {/* <ModalTemplate body={<OwingWidget/>} /> */}
       <Image style={tw`mx-auto my-8`} source={require('../images/Logo/r8Logo.png')}/>
       <View style={tw`mx-10`}>
@@ -50,38 +50,42 @@ const Login = ({navigation}) => {
           <Text>Input details to register</Text>
       </View>
        
-        <View style={tw`mt-3 mx-7 py-4 bg-white shadow-sm rounded-3xl px-5`}>
+        <View style={tw`mt-3 mx-7 py-6 bg-white  shadow-sm rounded-3xl px-5`}>
           
           <View>
               <View style={tw`my-3 border-b`}>
                 <Text>Username</Text>
                 <TextInput
                 placeholder='username'
+                style={tw`py-2`}
                 />
               </View>
               <View style={tw`my-3 border-b`}>
                 <Text>Password</Text>
                 <TextInput
                 placeholder='Pasword'
+                style={tw`py-2`}
                 secureTextEntry={true}
                 />
               </View>
           </View>
-          <RoundedButton 
-            text='Login'
-            pressed={()=>navigation.navigate('dashboard')}
-          />
+          <View style={tw`my-3`}>
+            <RoundedButton 
+              text='Login'
+              pressed={()=>navigation.navigate('dashboard')}
+            />
+          </View>
           <TouchableOpacity onPress={()=>navigation.navigate('forgotPassword')}> 
             <Text style={tw`text-xs`}>Forgot Password?</Text>
           </TouchableOpacity>
-          <View style={tw`flex-row mx-auto py-2`}>
+          <View style={tw`flex-row mx-auto py-4`}>
               <Text>Don't have an Account?</Text>
               <TouchableOpacity onPress={()=>navigation.navigate('register')}>
                 <Text style={tw`text-purple-800 font-bold`}> Register</Text>
               </TouchableOpacity>
           </View>
       </View>
-    </View>
+    </SafeAreaView>
   )
 }
 

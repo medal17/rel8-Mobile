@@ -6,7 +6,7 @@ import Feather from 'react-native-vector-icons/Feather'
 import Ionicon from 'react-native-vector-icons/Ionicons'
 import TobBar from '../../components/topBar'
 
-const News = ({navigation}) => {
+const Publication = ({navigation}) => {
     const data =[
         {id:1,title: 'Lorem ipsum dolor sit amet, ', body:'(Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices varius Mauris ultrices varius.....', picture:require('../../images/onboarding/phone.png')},
         {id:2,title: 'Lorem ipsum dolor sit amet, ', body:'(Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices varius Mauris ultrices varius.....', picture:require('../../images/onboarding/phone.png')},
@@ -20,7 +20,7 @@ const News = ({navigation}) => {
         body={
           <View style={tw`flex-row justify-between px-3`}>
               <Ionicon name='ios-chevron-back' onPress={()=>navigation.goBack()} size={30}/>
-              <Text style={tw`my-auto font-bold text-base`}>News</Text>
+              <Text style={tw`my-auto font-bold text-base`}>Publications</Text>
               <Ionicon name='md-notifications' style={tw`text-purple-800`} size={30}/>
           </View>
         }
@@ -41,19 +41,17 @@ const News = ({navigation}) => {
             showsVerticalScrollIndicator={false}
             renderItem={
                 ({item}) => (
-                //   <Pressable style={tw`w-1/2`}>
                   <NewsCard 
                     image={item.picture}
                     head={item.title}
                     body={item.body}
                     navigation={navigation}
-                    to='viewNews'
+                    to='viewPublication'
                   />
-                //   </Pressable>
                   )}/>
         </View>
     </SafeAreaView>
   )
 }
 
-export default News
+export default Publication
