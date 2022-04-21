@@ -40,6 +40,14 @@ import Support from './pages/support';
 import Elections from './pages/election';
 import ExpandableViewSeparate from './components/support/ExpadableView';
 import CustomDrawerList from './components/support/drawer';
+import Publication from './pages/publication';
+import ViewPublication from './pages/publication/viewPublication';
+import Exco from './pages/exco';
+import ViewExco from './pages/exco/viewExco';
+import Minutes from './pages/minutes';
+import Notifications from './pages/Notification';
+import Profile from './pages/Profile/profile';
+import EditProfile from './pages/Profile/EditProfile';
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator();
@@ -99,53 +107,9 @@ const TabScreen =()=>{
     </Tab.Navigator>)
 }
 
-// function CustomDrawerContent(props) {
-//   return (
-//     <DrawerContentScrollView {...props}>
-//       {getExpandableView(props)}
-//       <DrawerItem
-//         label="Help"
-//         onPress={() => navigationRef.navigate('login')}
-//       />
-//     </DrawerContentScrollView>
-//   );
-// }
-
-function getExpandableView(props){
-  return (
-      <ExpandableViewSeparate navObj={props.navigation}/>
-    );
-};
-
-function MeriApp() {
-  return (
-    <NavigationContainer>
-    <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
-    {/* screens */}
-    <Drawer.Screen name="Permission1" component={Login} />
-    <Drawer.Screen name="Permission2" component={Login}  />
-    </Drawer.Navigator>
-    </NavigationContainer>
-  )}
-
-  function CustomDrawerContent(props) {
-    return (
-        <SafeAreaView style={{flex:1}}>
-            <DrawerItem
-        label="Help"
-        onPress={() => props.navigation.navigate('login')}
-      />
-            <View style={{flex:1,justifyContent: 'flex-end'}}>
-            <Text>made with love</Text></View>
-        </SafeAreaView>
-    );
-  }
-
 
 export default function App() {
 
-  
-  
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown:false}} >
@@ -161,19 +125,21 @@ export default function App() {
         <Stack.Screen name='gallery' component={Gallery}/>  
         <Stack.Screen name='viewGallery' component={ViewGallery}/>  
         <Stack.Screen name='news' component={News}/>  
+        <Stack.Screen name='publication' component={Publication}/>
+        <Stack.Screen name='exco' component={Exco}/>
+        <Stack.Screen name='viewPublication' component={ViewPublication}/>
         <Stack.Screen name='viewNews' component={ViewNews}/>  
+        <Stack.Screen name='viewExco' component={ViewExco}/>  
         <Stack.Screen name='private-single' component={PrivateSingle}/>  
         <Stack.Screen name='account' component={MyAccount}/>
         <Stack.Screen name='events' component={Events}/>  
         <Stack.Screen name='viewEvents' component={ViewEvent}/>  
-        
+        <Stack.Screen name='minutes' component={Minutes}/>  
+        <Stack.Screen name='notifications' component={Notifications}/>          
         <Stack.Screen name='view-member' component={ViewMember}/>
+        <Stack.Screen name='profile' component={Profile}/>
+        <Stack.Screen name='editProfile' component={EditProfile}/>
 
-        {/* <Stack.Screen name='meri'>
-        {()=>(
-          <MeriApp/>
-        )}</Stack.Screen> */}
-        
         <Stack.Screen name='dashboard'>
         {()=>(
           <Drawer.Navigator  initialRouteName='HomeScreen' drawerContent={props => <CustomDrawerList {...props} />} >
@@ -214,29 +180,6 @@ export default function App() {
                  <MaterialIcon name='event-available' style={tw`text-center pb-2`} color={focused ? '#7F02A2' : '#C4C4C4'} size={size}/>
              ),}} 
               component={Events} 
-            />
-
-            <Drawer.Screen 
-              name="News" 
-              options={{drawerLabel:'News',drawerIcon: ({focused, size}) => (
-                <MaterialCom name="message-alert" size={size} color={focused ? '#7F02A2' : '#C4C4C4'}
-                />
-             ),}} 
-              component={News} 
-            />
-            <>
-                {MeriApp}
-                {/* <Text>yo</Text> */}
-            </>
-
-            <Drawer.Screen 
-              name="//" 
-              
-              options={{ drawerLabel:'Resources',drawerIcon: ({focused, size}) => (
-                <Ionicon
-                   name="ios-file-tray-full" size={size} color={focused ? '#7F02A2' : '#c4c4c4'}/>),}} 
-              component={MeriApp} 
-              // drawerContent={props => <CustomDrawerContent {...props} />}
             />
 
             <Drawer.Screen 

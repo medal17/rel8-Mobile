@@ -1,7 +1,6 @@
-import { View, Text, FlatList,SafeAreaView, ScrollView, Image, StatusBar, Pressable } from 'react-native'
+import { View, Text, TextInput, FlatList,SafeAreaView, ScrollView, Image, StatusBar, Pressable } from 'react-native'
 import React from 'react'
 import tw from 'tailwind-react-native-classnames'
-import { TextInput } from 'react-native-gesture-handler'
 import Ionicon from 'react-native-vector-icons/Ionicons'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
@@ -61,7 +60,10 @@ const Home = ({navigation}) => {
           <View style={tw`flex-row justify-between `}>
             <Ionicon  name='menu' onPress={()=>navigation.toggleDrawer()} size={34}/>
             <Text  style={tw`my-auto px-4`}>Welcome Rasheed</Text>
-            <Ionicon name='notifications' size={28} color='purple'/>
+            <Pressable onPress={()=>navigation.navigate('profile')}>
+              <Image style={tw`h-8 w-8 rounded-full`} source={require('../images/onboarding/phone.png')}/>
+            </Pressable>
+            <Ionicon name='notifications' onPress={()=>navigation.navigate('notifications')} size={28} color='purple'/>
           </View>
         }
       />

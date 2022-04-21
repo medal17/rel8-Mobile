@@ -58,7 +58,7 @@ const MyAccount = ({navigation}) => {
             </View> */}
         {/* </Stack.Navigator> */}
       {/* <MessageField/> */}
-      <View style={tw`flex-row justify-around` }>
+      <View style={tw`flex-row justify-around py-2` }>
         <BalanceCard 
             amount={5000} description='Total Paid'
              color='text-white'
@@ -72,7 +72,7 @@ const MyAccount = ({navigation}) => {
             icon={<Ionicon name='wallet' size={25}  style={tw`my-auto text-purple-900 mr-2`}/>}
         />
        </View>
-        <View style={tw`flex-row justify-around`}>
+        <View style={tw`flex-row justify-around pt-3`}>
             <TabbedButton text='Paid' index={0} selected={selected} pressed={()=>handlePressed(0)}/>
             <TabbedButton text='Outstanding' index={1} selected={selected} pressed={()=>handlePressed(1)} />
         </View> 

@@ -173,7 +173,7 @@ const ModalSucess =(props)=>{
       
       <View style={tw`mx-8 flex-row mt-3 mx-auto`}>
         <View style={tw`w-3/6`}> 
-          <RoundedButton text='Cancel' pressed={()=>props.setVisible(false)}/>
+          <RoundedButton text='Go Back' pressed={()=>props.setVisible(false)}/>
         </View>
         {/* <TouchableOpacity onPress={()=>props.setVisible(false)} style={tw`my-auto px-5`}>
           <Text>Cancel</Text>

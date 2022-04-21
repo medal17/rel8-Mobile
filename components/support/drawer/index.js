@@ -20,6 +20,7 @@ const handlePress=(props)=>{
 const DrawerButton =(props)=>{
     return(
         <DrawerItem activeTintColor='purple'
+            key={props.id}
             style={tw`${props.bg}`}
                 label={props.label}
                 onPress={() => handlePress(props)}
@@ -33,28 +34,28 @@ export default function CustomDrawerList({navigation}) {
     const [visible, setVisible] = useState(false)
     const [showDropdown, setshowDropdown] = useState(false)
     const drawerData=[
-        {id:1, label:'Home', to:'dashboard', icon:<Ionicon name='md-home' size={22} color={ id==selected ?'red': 'grey'}/>},
-        {id:2, label:'Events', to:'events', icon:(<MaterialIcon name='event-available' style={tw`text-center `} color={ id==selected ?'red': 'grey'} size={22}/>)},
-        {id:3, label:'News', to:'news', icon:<MaterialCom name="message-alert" size={22} color={id==selected ?'red': 'grey'}
+        {id:1, label:'Home', to:'dashboard', icon:<Ionicon name='md-home' size={22} color={'grey'}/>},
+        {id:2, label:'Events', to:'events', icon:(<MaterialIcon name='event-available' style={tw`text-center `} color={'grey'} size={22}/>)},
+        {id:3, label:'News', to:'news', icon:<MaterialCom name="message-alert" size={22} color={'grey'}
         />}
     // {id:9, label:'Logout', to:'subscribe'},
     ]
 
     const drawerData2 =[
-        {id:5, label:'Gallery', to:'gallery', icon:<FontAwesome name="photo" size={22} color={id==selected ?'red': 'grey'}
+        {id:5, label:'Gallery', to:'gallery', icon:<FontAwesome name="photo" size={22} color={'grey'}
         /> },
-        {id:6, label:'Election', to:'election', icon:<MaterialIcon name="how-to-vote" size={22} color={id==selected ?'red': 'grey'}
+        {id:6, label:'Election', to:'election', icon:<MaterialIcon name="how-to-vote" size={22} color={'grey'}
         />},
-        {id:7, label:'Subscribe', to:'subscribe', icon:<MaterialIcon name="subscriptions" size={22} color={id==selected ?'red': 'grey'}
+        {id:7, label:'Subscribe', to:'subscribe', icon:<MaterialIcon name="subscriptions" size={22} color={'grey'}
         />},
-        {id:8, label:'Support', to:'support', icon:<MaterialIcon name="headset-mic" size={22} color={id==selected ?'red': 'grey'}
+        {id:8, label:'Support', to:'support', icon:<MaterialIcon name="headset-mic" size={22} color={'grey'}
      /> },
     ]
 
     const options =[
-        {id:1, label:'Exco', to:'excos'},
-        {id:2, label:'Publications', to:'publication'},
-        {id:3, label:'Minutes', to:'minutes'},
+        {id:9, label:'Exco', to:'exco'},
+        {id:10, label:'Publications', to:'publication'},
+        {id:11, label:'Minutes', to:'minutes'},
        
     ]
 
@@ -94,15 +95,13 @@ export default function CustomDrawerList({navigation}) {
                     icon={e.icon}
                 />)}
             
-            <DrawerItem
-                label="Resources"
-                onPress={() => setshowDropdown(!showDropdown)}
-                // icon={<Ionicon
-                //        name="ios-file-tray-full" size={22} color={ '#c4c4c4'}/>}
-               
-            />
+            
+            <Pressable onPress={()=>setshowDropdown(!showDropdown)} style={tw`my-4 flex-row mx-5`}>
+                <Ionicon name='ios-file-tray-full' style={tw`mr-8 my-auto text-gray-500`} size={22} />
+                <Text style={tw`text-gray-500`}>Resources</Text>
+            </Pressable>
             { showDropdown ? options.map(e=>
-            <Pressable onPress={()=>handleSub(e.to)} style={tw`w-full ml-10 my-1`}>
+            <Pressable key={e.id} onPress={()=>handleSub(e.to)} style={tw`w-full ml-12 my-1`}>
                 <Text style={tw`text-gray-600`}>{e.label}</Text>
             </Pressable>):<></>}
 
@@ -110,21 +109,19 @@ export default function CustomDrawerList({navigation}) {
             <DrawerButton
                 label={e.label}
                 navigation={navigation}
-                id={e.id}
+                id={e.id}s
                 to={e.to}
                 setSelected={setSelected}
                 selected={selected}
                 bg={selected == e.id ?'bg-purple-200':''}
                 icon={e.icon}
             />)}
-
-            <DrawerItem
-                label="Logout"
-                onPress={() => setVisible(true)
-               }
-            />
-            <View style={{flex:1,justifyContent: 'flex-end'}}>
-            <Text>Powered by Tomation</Text></View>
+            
+            <Pressable onPress={()=>setVisible(true)} style={tw`my-4 flex-row mx-5`}>
+                <MaterialIcon name='logout' style={tw`mr-8 my-auto text-gray-500`} size={22} />
+                <Text>Logout</Text>
+            </Pressable>
+            {/* s */}
         </SafeAreaView>
   );
 }
