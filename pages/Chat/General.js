@@ -33,7 +33,7 @@ const General = () => {
                 )}
         />
         </KeyboardAvoidingView>
-        <KeyboardAvoidingView behavior='padding'>
+        <KeyboardAvoidingView style={tw`absolute bg-white bottom-0 left-1 w-full`} behavior='position'>
             <MessageField/> 
         </KeyboardAvoidingView>
     </View>
