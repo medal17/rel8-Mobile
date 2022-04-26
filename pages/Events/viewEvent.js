@@ -10,14 +10,14 @@ import ModalTemplate from '../../components/Modal'
 
 
 
-const ViewEvent = () => {
+const ViewEvent = ({route}) => {
   const [register, setRegister] = useState(false)
   const [status, setStatus] = useState(false)
   return (
     <ScrollView style={tw`h-full`}>
       <ModalTemplate 
         visible={register}
-        body={<ModalRegisterComponent setVisible={setRegister} setStatus={setStatus}/>}
+        body={<ModalRegisterComponent setVisible={setRegister} route={route} setStatus={setStatus}/>}
       />
 
       <ModalTemplate 
@@ -33,7 +33,7 @@ const ViewEvent = () => {
         </View>
         
         <View style={tw`px-4 py-2`}>
-            <Text style={tw`text-base font-bold text-purple-800 py-1`}>24th Annual Anniversary Celebration</Text>
+            <Text style={tw`text-base font-bold text-purple-800 py-1`}>24th Annual Anniversary Celebration {route.params.type}</Text>
             
           <View style={tw`border-t border-b border-gray-500 my-2 py-2`}>
             <View style={tw`flex-row`}> 
@@ -117,11 +117,13 @@ const ModalRegisterComponent =(props)=>{
         <Text style={tw`mx-5 font-bold py-1 border-b`}>08143678798</Text>
       </View>
 
+      
       <View style={tw`py-2`}>
         <Text style={tw`px-5 font-bold text-purple-800`}>Gate Fee</Text>
         <Text style={tw`mx-5 font-bold py-1 border-b`}>N 5,000</Text>
       </View>
-
+{ props.route.params.type=='member' ?
+<>
       <View style={tw`py-2 flex-row`}>
         <View style={tw`py-2 flex-row`}>
           <Text style={tw`pl-5 font-bold text-purple-800`}>Attire Fee:</Text>
@@ -146,8 +148,8 @@ const ModalRegisterComponent =(props)=>{
         <MaterialIcon name='check-box' style={tw`my-auto`} size={23} onPress={()=>setPayFee(false)}/>
 
         }
-      </View>
-      
+      </View></>
+    :<></>}  
       <View style={tw`mx-8 flex-row mt-3 mx-auto`}>
         <View style={tw`w-3/6`}> 
           <RoundedButton text='Pay' pressed={()=>handleStatus(true)}/>

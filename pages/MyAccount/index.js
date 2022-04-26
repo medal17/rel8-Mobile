@@ -68,7 +68,7 @@ const MyAccount = ({navigation}) => {
         <BalanceCard 
             amount={5000000} description='Outstanding' 
             color='text-purple-900'
-            bg='bg-purple-200'
+            bg='bg-purple-100'
             icon={<Ionicon name='wallet' size={25}  style={tw`my-auto text-purple-900 mr-2`}/>}
         />
        </View>

@@ -6,26 +6,46 @@ import Feather from 'react-native-vector-icons/Feather'
 import Ionicon from 'react-native-vector-icons/Ionicons'
 import TabbedButton from '../../components/button/TabbedButton'
 import State from './state'
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TobBar from '../../components/topBar'
+import National from './national'
+import Member from './member'
 
 const Events = ({navigation}) => {
-  const [selectedIndex, setSelectedIndex] = useState(0)  
-  const [data,setData] = useState([
+  const [selectedIndex, setSelectedIndex] = useState(0)
+const Stack = createNativeStackNavigator()
+
+  const data =[
         {id:1,title: 'Lorem ipsum dolor sit amet, ', body:'(Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices varius Mauris ultrices varius.....', picture:require('../../images/onboarding/phone.png')},
         {id:2,title: 'Lorem ipsum dolor sit amet, ', body:'(Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices varius Mauris ultrices varius.....', picture:require('../../images/onboarding/phone.png')},
         {id:3,title: 'Lorem ipsum dolor sit amet, ', body:'(Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices varius Mauris ultrices varius.....', picture:require('../../images/onboarding/phone.png')},
         {id:4,title: 'Lorem ipsum dolor sit amet, ', body:'(Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices varius Mauris ultrices varius.....', picture:require('../../images/onboarding/phone.png')},
-        {id:5,title: 'Lorem ipsum dolor sit amet, ', body:'(Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices varius Mauris ultrices varius.....', picture:require('../../images/onboarding/phone.png')},
-      ])
+        // {id:5,title: 'Lorem ipsum dolor sit amet, ', body:'(Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices varius Mauris ultrices varius.....', picture:require('../../images/onboarding/phone.png')},
+      ]
 
       const handleSelect =(index)=>{
-        setSelectedIndex(index)
+        if(index==0){
+          navigation.navigate('national')
+          setSelectedIndex(index)
+      }else if(index==1){
+          navigation.navigate('state')
+          setSelectedIndex(index)
+      }else if(index==2){
+        navigation.navigate('member')
+          setSelectedIndex(index)
+          // alert(index)
+      }
+        // setSelectedIndex(index);
+        // if(index==0){
+        //   // setSelectedIndex(index);
+        //   navigation.navigate('state')
+        // }
         
       }
 
 
   return (
-    <SafeAreaView style={tw`px-2`}>
+    <SafeAreaView style={tw`px-2 h-full`}>
       <TobBar
         body={
           <View style={tw`flex-row justify-between px-3`}>
@@ -81,7 +101,12 @@ const Events = ({navigation}) => {
                 //   </Pressable>
                   )}/>
         </View> */}
-        <State data={data} navigation={navigation} />
+        <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName='national'>
+          {/* <State data={data} navigation={navigation} /> */}
+          <Stack.Screen name='national' component={National}/>
+          <Stack.Screen name='state' component={State}/>
+          <Stack.Screen name='member' component={Member}/>
+        </Stack.Navigator>
     </SafeAreaView>
   )
 }
