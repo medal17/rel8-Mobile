@@ -10,7 +10,7 @@ const FirstBoard = ({navigation}) => {
       <Onboarding
         image={require('../../images/onboarding/guy.png')}
         title='Welcome to REL8'
-        body='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet consequat pellentesque eget nisl. Amet consequat pellentesque eget nLorem ipsum dolor sit amet, consectetur adipiscing elit. Amet consequat pellentesque eget nisl. Amet consequat pellentesque eget n'
+        body='Rel8 is a community-based interaction and collaboration app, designed to keep the operations, interactions and collaborative activities of people of common interests in sync remotely within closed defined virtual communities.'
         navigation= {navigation}
         next={'second'}
       />
