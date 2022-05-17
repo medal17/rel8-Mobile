@@ -60,17 +60,25 @@ const Login = ({navigation}) => {
   }
 
   return (
-    <SafeAreaView >
+    <SafeAreaView style={tw`pt-4`} >
       {/* <ModalTemplate body={<OwingWidget/>} /> */}
-      <Image style={tw`mx-auto my-8`} source={require('../images/Logo/r8Logo.png')}/>
+      <Image style={tw`mx-auto my-8 h-16 w-16`} source={require('../images/Logo/rel88.png')}/>
       <View style={tw`mx-10`}>
          <Text style={tw`text-base font-bold`}>Login</Text>
-          <Text>Input details to register</Text>
+          <Text>Input details to Login</Text>
       </View>
        
         <View style={tw`mt-3 mx-7 py-6 bg-white  shadow-sm rounded-3xl px-5`}>
           
           <View>
+              <View style={tw`my-3 border-b`}>
+                <Text>Organization Name</Text>
+                <TextInput
+                placeholder='Organization Name'
+                style={tw`py-2`}
+                onChangeText={(text)=>setOrg(text)}
+                />
+              </View>
               <View style={tw`my-3 border-b`}>
                 <Text>Username</Text>
                 <TextInput

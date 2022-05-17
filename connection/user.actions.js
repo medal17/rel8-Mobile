@@ -60,20 +60,115 @@ export const LoginUser = async(data, org,callback, setLoading)=>{
     }
 }
 
-// //gets user Tasks by status
-// export const UserTasksByStatus = async(status,callback, startDate, endDate)=>{
-//     try {
-//         const response = startDate ? await api.get(`client/${AsyncStorage.getItem('org_name')}/task/?owner_email=${AsyncStorage.getItem('email')}&task_status=${status}&start_date_before=${startDate}`)
-//         : await api.get(`client/${AsyncStorage.getItem('org_name')}/task/?owner_email=${AsyncStorage.getItem('email')}&task_status=${status}`);
-//         if (response.status==200) {
-//             callback(response);
-//         } else {
-//           console.log(response.data.status)
-//           callback(response.data)
-//         }
-//     } catch (error) {
-//         console.error(error)
-//         // setLoading(false)
+// tenant/{{shortName}}/tenant/news/getyournews/
+//Gets News for a Member
+export const GetNews = async(status,callback)=>{
+    try {
+        const response = await api.get(`tenant/${AsyncStorage.getItem('org_name')}/tenant/news/getyournews/`)
+       
+        if (response.status==200) {
+            callback(response);
+        } else {
+          console.log(response.data.status)
+          callback(response.data)
+        }
+    } catch (error) {
+        console.error(error)
+        // setLoading(false)
 
-//     }
-// }
+    }
+}
+
+// Like News
+export const LikeDisLikeNews = async(data,callback)=>{
+    try {
+        const response = await api.post(`tenant/${AsyncStorage.getItem('org_name')}/tenant/news/getyournews/`, data)
+       
+        if (response.status==200) {
+            callback(response);
+        } else {
+          console.log(response.data.status)
+          callback(response.data)
+        }
+    } catch (error) {
+        console.error(error)
+        // setLoading(false)
+
+    }
+}
+
+//Get Publications
+export const GetPublications = async(status,callback)=>{
+    try {
+        const response = await api.get(`tenant/${AsyncStorage.getItem('org_name')}/tenant/publication/getyourpublication/`)
+       
+        if (response.status==200) {
+            callback(response);
+        } else {
+          console.log(response.data.status)
+          callback(response.data)
+        }
+    } catch (error) {
+        console.error(error)
+        // setLoading(false)
+
+    }
+}
+
+// Like Publication
+export const LikeDisLikePublication = async(data,callback)=>{
+    try {
+        const response = await api.post(`tenant/${AsyncStorage.getItem('org_name')}/tenant/publication/getyourpublication/`, data)
+       
+        if (response.status==200) {
+            callback(response);
+        } else {
+          console.log(response.data.status)
+          callback(response.data)
+        }
+    } catch (error) {
+        console.error(error)
+        // setLoading(false)
+
+    }
+}
+
+
+// Get Events
+// /tenant/event/eventview/get_events/?is_chapter=true
+export const GetEvents = async(status,callback)=>{
+    try {
+        const response = await api.get(`tenant/${AsyncStorage.getItem('org_name')}/tenant/event/eventview/get_events/?is_chapter=true`)
+       
+        if (response.status==200) {
+            callback(response);
+        } else {
+          console.log(response.data.status)
+          callback(response.data)
+        }
+    } catch (error) {
+        console.error(error)
+        // setLoading(false)
+
+    }
+}
+
+// /tenant/dues/AdminManageDue/due_list_and_owning_members/
+// Get My Dues
+
+export const GetMyDues = async(status,callback)=>{
+    try {
+        const response = await api.get(`tenant/${AsyncStorage.getItem('org_name')}/tenant/dues/AdminManageDue/due_list_and_owning_members/`)
+       
+        if (response.status==200) {
+            callback(response);
+        } else {
+          console.log(response.data.status)
+          callback(response.data)
+        }
+    } catch (error) {
+        console.error(error)
+        // setLoading(false)
+
+    }
+}

@@ -5,8 +5,8 @@ import RoundedButton from '../components/button/RoundedButton'
 
 const Register = ({navigation}) => {
   return (
-    <View>
-      <Image style={tw`mx-auto my-8`} source={require('../images/Logo/r8Logo.png')}/>
+    <View style={tw`pt-4`}>
+      <Image style={tw`mx-auto my-8 h-16 w-16`} source={require('../images/Logo/rel88.png')}/>
       <View style={tw`mx-10`}>
          <Text style={tw`text-base font-bold`}>Register</Text>
           <Text>Input details to register</Text>
