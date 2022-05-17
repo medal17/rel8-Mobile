@@ -1,5 +1,8 @@
-import { View, SafeAreaView,Text, Image, TextInput,TouchableOpacity } from 'react-native'
+import { View, SafeAreaView, ActivityIndicator,Text, Image, TextInput,TouchableOpacity } from 'react-native'
 import React, {useState} from 'react'
+import localStorage from 'react-native-sync-localstorage'
+import jwt_decode from 'jwt-decode'
+
 import tw from 'tailwind-react-native-classnames'
 import RoundedButton from '../components/button/RoundedButton'
 import ModalTemplate from '../components/Modal'
@@ -50,21 +53,28 @@ const Login = ({navigation}) => {
   const [password, setPassword] = useState(null)
 
   const handleLogin =()=>{
-    LoginUser({'username':username, 'password':password}, org,callback, setLoading)
+    setLoading(true)
+    LoginUser({'email':username, 'password':password}, org,callback, setLoading)
     // navigation.navigate('dashboard')
   }
-// console.log(username)
+  // console.log(j(localStorage.getItem('token'))) 
+
 
   const callback =(res)=>{
-    console.log(res)
+    // console.log(jwt_decode(res.data.token))
+    console.log(res.data.token)
+    
+    // console.log(jwt_decode(res.data.token))
+    navigation.navigate('dashboard')
   }
+
 
   return (
     <SafeAreaView style={tw`pt-4`} >
       {/* <ModalTemplate body={<OwingWidget/>} /> */}
       <Image style={tw`mx-auto my-8 h-16 w-16`} source={require('../images/Logo/rel88.png')}/>
       <View style={tw`mx-10`}>
-         <Text style={tw`text-base font-bold`}>Login</Text>
+         <Text style={tw`text-base font-bold`}>Login </Text>
           <Text>Input details to Login</Text>
       </View>
        
@@ -98,9 +108,16 @@ const Login = ({navigation}) => {
               </View>
           </View>
           <View style={tw`my-3`}>
-            <RoundedButton text='Login'
+            {!loading ?
+              <RoundedButton text='Login'
               pressed={()=>handleLogin()}
-            />
+            />:
+            <View style={tw`w-full bg-purple-100 py-2.5 rounded-2xl`}> 
+              {/* <Text></Text> */}
+              
+                <ActivityIndicator color='purple'/>
+            </View>
+            }
           </View>
           <TouchableOpacity onPress={()=>navigation.navigate('forgotPassword')}> 
             <Text style={tw`text-xs`}>Forgot Password?</Text>
