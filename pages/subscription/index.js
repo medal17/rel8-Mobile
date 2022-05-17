@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View,SafeAreaView,Text } from 'react-native';
+import { View,SafeAreaView,Text, ScrollView } from 'react-native';
 import Ionicon from 'react-native-vector-icons/Ionicons'
 import tw from 'tailwind-react-native-classnames';
 import PlanCard from '../../components/Plan/PlanCard';
@@ -12,6 +12,7 @@ export default function Subscribe({navigation}) {
 
   return (
     <SafeAreaView>
+        <ScrollView>
         <TobBar
             body={
                 <View style={tw`flex-row justify-between px-3`}>
@@ -73,6 +74,7 @@ export default function Subscribe({navigation}) {
                     <Ionicon name='ios-square-outline' size={20} onPress={()=>setChecked(!checked)}/>
                 }
             </View>
+        </ScrollView>
     </SafeAreaView>
   );
 }

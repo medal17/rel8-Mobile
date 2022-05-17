@@ -1,30 +1,25 @@
 Arguments: 
-  /usr/local/bin/node /Users/user/.npm-global/bin/yarn add react-native-reanimated: ~1.13.0,
+  C:\Program Files\nodejs\node.exe C:\Users\C\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js start
 
 PATH: 
-  /Users/user/Desktop/flutter/bin:/Users/user/.npm-global/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/user/.zsh/misc
+  C:\Users\C\AppData\Local\Android\Sdk\emulator;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Dart\dart-sdk\bin;C:\Program Files\Git\cmd;C:\Gradle\gradle-3.5\bin;C:\Program Files\Java\jdk8u202-b08\bin;C:\Program Files\nodejs\;C:\Users\C\AppData\Local\Android\Sdk\platform-tools;C:\Users\C\AppData\Local\Microsoft\WindowsApps;C:\Users\C\AppData\Local\Programs\Microsoft VS Code\bin;C:\src\flutter\bin;C:\Users\C\AppData\Roaming\npm
 
 Yarn version: 
-  1.22.18
+  1.22.17
 
 Node version: 
-  16.14.0
+  14.17.6
 
 Platform: 
-  darwin x64
+  win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/react-native-reanimated:: Not found
-      at Request.params.callback [as _callback] (/Users/user/.npm-global/lib/node_modules/yarn/lib/cli.js:66138:18)
-      at Request.self.callback (/Users/user/.npm-global/lib/node_modules/yarn/lib/cli.js:140883:22)
-      at Request.emit (node:events:520:28)
-      at Request.<anonymous> (/Users/user/.npm-global/lib/node_modules/yarn/lib/cli.js:141855:10)
-      at Request.emit (node:events:520:28)
-      at IncomingMessage.<anonymous> (/Users/user/.npm-global/lib/node_modules/yarn/lib/cli.js:141777:12)
-      at Object.onceWrapper (node:events:639:28)
-      at IncomingMessage.emit (node:events:532:35)
-      at endReadableNT (node:internal/streams/readable:1346:12)
-      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+  SyntaxError: C:\Users\C\ReactNativeApps\Rel8\package.json: Unexpected token < in JSON at position 519
+      at JSON.parse (<anonymous>)
+      at C:\Users\C\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (C:\Users\C\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:310:30)
+      at C:\Users\C\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:321:13
 
 npm manifest: 
   {
@@ -37,16 +32,25 @@ npm manifest:
       "eject": "expo eject"
     },
     "dependencies": {
+      "@react-native-async-storage/async-storage": "~1.15.0",
       "@react-navigation/bottom-tabs": "^6.2.0",
+      "@react-navigation/drawer": "^5.9.0",
       "@react-navigation/native": "^6.0.8",
       "@react-navigation/native-stack": "^6.5.2",
       "@react-navigation/stack": "^6.1.1",
+  <<<<<<< HEAD
+  =======
+      "axios": "^0.17.1",
+  >>>>>>> e8038f5f318c5fd31653aefd1bd6ac81543e0e2f
       "expo": "~44.0.0",
+      "expo-document-picker": "~10.1.3",
+      "expo-image-picker": "~12.0.1",
       "expo-status-bar": "~1.2.0",
       "react": "17.0.1",
       "react-dom": "17.0.1",
       "react-native": "0.64.3",
       "react-native-gesture-handler": "~2.1.0",
+      "react-native-reanimated": "~1.13.0",
       "react-native-safe-area-context": "3.3.2",
       "react-native-screens": "^3.13.1",
       "react-native-vector-icons": "^9.1.0",
@@ -1346,6 +1350,13 @@ Lockfile:
       "@nodelib/fs.scandir" "2.1.5"
       fastq "^1.6.0"
   
+  "@react-native-async-storage/async-storage@~1.15.0":
+    version "1.15.17"
+    resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-1.15.17.tgz#0dae263a52e476ffce871086f1fef5b8e44708eb"
+    integrity sha512-NQCFs47aFEch9kya/bqwdpvSdZaVRtzU7YB02L8VrmLSLpKgQH/1VwzFUBPcc1/JI1s3GU4yOLVrEbwxq+Fqcw==
+    dependencies:
+      merge-options "^3.0.4"
+  
   "@react-native-community/cli-debugger-ui@^5.0.1":
     version "5.0.1"
     resolved "https://registry.yarnpkg.com/@react-native-community/cli-debugger-ui/-/cli-debugger-ui-5.0.1.tgz#6b1f3367b8e5211e899983065ea2e72c1901d75f"
@@ -1519,6 +1530,14 @@ Lockfile:
       nanoid "^3.1.23"
       query-string "^7.0.0"
       react-is "^16.13.0"
+  
+  "@react-navigation/drawer@^5.9.0":
+    version "5.12.9"
+    resolved "https://registry.yarnpkg.com/@react-navigation/drawer/-/drawer-5.12.9.tgz#b07d7391a6fea4ce07cd7a7421fdbaea37cdbb46"
+    integrity sha512-SYb2BCEAn+BiEwC6WBfCzs1VlWD+ZdQbxmsim6vo1o+ndPW2e+kiq7FXKRs0vUXhQRZVl2oOB3vBn0c3YCllQg==
+    dependencies:
+      color "^3.1.3"
+      react-native-iphone-x-helper "^1.3.0"
   
   "@react-navigation/elements@^1.3.3":
     version "1.3.3"
@@ -1840,6 +1859,14 @@ Lockfile:
     version "2.1.2"
     resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
     integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
+  
+  axios@^0.17.1:
+    version "0.17.1"
+    resolved "https://registry.yarnpkg.com/axios/-/axios-0.17.1.tgz#2d8e3e5d0bdbd7327f91bc814f5c57660f81824d"
+    integrity sha1-LY4+XQvb1zJ/kbyBT1xXZg+Bgk0=
+    dependencies:
+      follow-redirects "^1.2.5"
+      is-buffer "^1.1.5"
   
   babel-core@^7.0.0-bridge.0:
     version "7.0.0-bridge.0"
@@ -2431,6 +2458,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
     integrity sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY=
   
+  core-js@^2.4.1:
+    version "2.6.12"
+    resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
+    integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
+  
   core-util-is@~1.0.0:
     version "1.0.3"
     resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.3.tgz#a6042d3634c2b27e9328f837b965fac83808db85"
@@ -2794,6 +2826,14 @@ Lockfile:
       "@expo/config" "^6.0.6"
       uuid "^3.3.2"
   
+  expo-document-picker@~10.1.3:
+    version "10.1.3"
+    resolved "https://registry.yarnpkg.com/expo-document-picker/-/expo-document-picker-10.1.3.tgz#68a82635e9473eb19f128193f1111e7400055a7d"
+    integrity sha512-JKARJBnQ5Aug92hg2MFKrM2LqiMQabcUBYJwBhwSuc0A7dNUeprw0hkaOK0D9Fk7Ae9t+flRX0N5R/aADek3HA==
+    dependencies:
+      "@expo/config-plugins" "^4.0.2"
+      uuid "^3.3.2"
+  
   expo-error-recovery@~3.0.5:
     version "3.0.5"
     resolved "https://registry.yarnpkg.com/expo-error-recovery/-/expo-error-recovery-3.0.5.tgz#1802b733e998606a8fcfb0abe6682c334319ef75"
@@ -2813,6 +2853,14 @@ Lockfile:
     integrity sha512-x9YwM0xLkDdSvFjeNbyuh33Q1Hk3uc2jbMuuAN5W2ZVcUZqG0M8GCX/KV/D/7rYqdXKbliQA5r44MyDwZe/XRw==
     dependencies:
       fontfaceobserver "^2.1.0"
+  
+  expo-image-picker@~12.0.1:
+    version "12.0.2"
+    resolved "https://registry.yarnpkg.com/expo-image-picker/-/expo-image-picker-12.0.2.tgz#4789c5419208ff8ede557784368a7f18f3878c30"
+    integrity sha512-rAoNGtofV5cg3UN+cdIGDVfbMvbutBX6uNV7jCIEw/WZxZlbW+R7HC8l5lGDFtoLVqcpkHE/6JpAXvESxVSAOA==
+    dependencies:
+      "@expo/config-plugins" "^4.0.2"
+      uuid "7.0.2"
   
   expo-keep-awake@~10.0.2:
     version "10.0.2"
@@ -2953,6 +3001,20 @@ Lockfile:
       setimmediate "^1.0.5"
       ua-parser-js "^0.7.30"
   
+  fbjs@^1.0.0:
+    version "1.0.0"
+    resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-1.0.0.tgz#52c215e0883a3c86af2a7a776ed51525ae8e0a5a"
+    integrity sha512-MUgcMEJaFhCaF1QtWGnmq9ZDRAzECTCRAF7O6UZIlAlkTs1SasiX9aP0Iw7wfD2mJ7wDTNfg2w7u5fSCwJk1OA==
+    dependencies:
+      core-js "^2.4.1"
+      fbjs-css-vars "^1.0.0"
+      isomorphic-fetch "^2.1.1"
+      loose-envify "^1.0.0"
+      object-assign "^4.1.0"
+      promise "^7.1.1"
+      setimmediate "^1.0.5"
+      ua-parser-js "^0.7.18"
+  
   fbjs@^3.0.0:
     version "3.0.4"
     resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-3.0.4.tgz#e1871c6bd3083bac71ff2da868ad5067d37716c6"
@@ -3050,6 +3112,11 @@ Lockfile:
     version "0.121.0"
     resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.121.0.tgz#9f9898eaec91a9f7c323e9e992d81ab5c58e618f"
     integrity sha512-1gIBiWJNR0tKUNv8gZuk7l9rVX06OuLzY9AoGio7y/JT4V1IZErEMEq2TJS+PFcw/y0RshZ1J/27VfK1UQzYVg==
+  
+  follow-redirects@^1.2.5:
+    version "1.15.0"
+    resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.0.tgz#06441868281c86d0dda4ad8bdaead2d02dca89d4"
+    integrity sha512-aExlJShTV4qOUOL7yF1U5tvLCB0xQuudbf6toyYA0E/acBNw71mvjFTnLaRp50aQaYocMR0a/RMMBIHeZnGyjQ==
   
   fontfaceobserver@^2.1.0:
     version "2.1.0"
@@ -3547,6 +3614,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/is-number/-/is-number-7.0.0.tgz#7535345b896734d5f80c4d06c50955527a14f12b"
     integrity sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==
   
+  is-plain-obj@^2.1.0:
+    version "2.1.0"
+    resolved "https://registry.yarnpkg.com/is-plain-obj/-/is-plain-obj-2.1.0.tgz#45e42e37fccf1f40da8e5f76ee21515840c09287"
+    integrity sha512-YWnfyRwxL/+SsrWYfOpUtz5b3YD+nyfkHvjbcanzk8zgyO4ASD67uVMRt8k5bM4lLMDnXfriRhOpemw+NfT1eA==
+  
   is-plain-object@^2.0.3, is-plain-object@^2.0.4:
     version "2.0.4"
     resolved "https://registry.yarnpkg.com/is-plain-object/-/is-plain-object-2.0.4.tgz#2c163b3fafb1b606d9d17928f05c2a1c38e07677"
@@ -4001,6 +4073,13 @@ Lockfile:
     integrity sha512-3Tkp1piAHaworfcCgH0jKbTvj1jWWFgbvh2cXaNCgHwyTCBxxvD1Y04rmfpvdPm1P4oXMOpm6+2H7sr7v9v8Fw==
     dependencies:
       buffer-alloc "^1.1.0"
+  
+  merge-options@^3.0.4:
+    version "3.0.4"
+    resolved "https://registry.yarnpkg.com/merge-options/-/merge-options-3.0.4.tgz#84709c2aa2a4b24c1981f66c179fe5565cc6dbb7"
+    integrity sha512-2Sug1+knBjkaMsMgf1ctR1Ujx+Ayku4EdJN4Z+C2+JzoeF7A3OZ9KM2GY0CpQS51NR61LTurMJrRKPhSs3ZRTQ==
+    dependencies:
+      is-plain-obj "^2.1.0"
   
   merge-stream@^2.0.0:
     version "2.0.0"
@@ -4994,6 +5073,18 @@ Lockfile:
       lodash "^4.17.21"
       prop-types "^15.7.2"
   
+  react-native-iphone-x-helper@^1.3.0:
+    version "1.3.1"
+    resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz#20c603e9a0e765fd6f97396638bdeb0e5a60b010"
+    integrity sha512-HOf0jzRnq2/aFUcdCJ9w9JGzN3gdEg0zFE4FyYlp4jtidqU03D5X7ZegGKfT1EWteR0gPBGp9ye5T5FvSWi9Yg==
+  
+  react-native-reanimated@~1.13.0:
+    version "1.13.4"
+    resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.13.4.tgz#f57c65e80ab5d2f60bf7dd21716c0bad8108b84e"
+    integrity sha512-sFbZFh0WanKTa0Fz7GXCZUjWpk/u04ytprcIs4Kb+ijfQHChXva3m3yQZfvbrhRbABJNHrdeuyDgJxDM2mcBgw==
+    dependencies:
+      fbjs "^1.0.0"
+  
   react-native-safe-area-context@3.3.2:
     version "3.3.2"
     resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.3.2.tgz#9549a2ce580f2374edb05e49d661258d1b8bcaed"
@@ -5924,7 +6015,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.7.1.tgz#8dda65feaf03ed78f0a3f9678f1869147f7c5c48"
     integrity sha512-Ne2YiiGN8bmrmJJEuTWTLJR32nh/JdL1+PSicowtNb0WFpn59GK8/lfD61bVtzguz7b3PBt74nxpv/Pw5po5Rg==
   
-  ua-parser-js@^0.7.30:
+  ua-parser-js@^0.7.18, ua-parser-js@^0.7.30:
     version "0.7.31"
     resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.31.tgz#649a656b191dffab4f21d5e053e27ca17cbff5c6"
     integrity sha512-qLK/Xe9E2uzmYI3qLeOmI0tEOt+TBBQyUIAh4aAgU05FVYzeZrKUdkAZfBNVGRaHVgV0TDkdEngJSw/SyQchkQ==
@@ -6035,6 +6126,11 @@ Lockfile:
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
     integrity sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
+  
+  uuid@7.0.2:
+    version "7.0.2"
+    resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.2.tgz#7ff5c203467e91f5e0d85cfcbaaf7d2ebbca9be6"
+    integrity sha512-vy9V/+pKG+5ZTYKf+VcphF5Oc6EFiu3W8Nv3P3zIh0EqVI80ZxOzuPfe9EHjkFNvf8+xuTHVeei4Drydlx4zjw==
   
   uuid@^3.3.2, uuid@^3.4.0:
     version "3.4.0"

@@ -1,13 +1,15 @@
 import { View, SafeAreaView,Text, Image, TextInput,TouchableOpacity } from 'react-native'
-import {useState} from 'react'
+import React, {useState} from 'react'
 import tw from 'tailwind-react-native-classnames'
 import RoundedButton from '../components/button/RoundedButton'
 import ModalTemplate from '../components/Modal'
 import Ionicon from 'react-native-vector-icons/Ionicons'
+import { LoginUser } from '../connection/user.actions'
 
 
 const OwingWidget=()=>{
   const [checked, setChecked] = useState(false)
+  
   return(
     <View style={tw`bg-white mx-10 px-5 py-5 my-auto rounded-2xl`}>
       <Text style={tw`text-center mb-1`}> ACCOUNT LOCKED</Text>
@@ -40,24 +42,49 @@ const OwingWidget=()=>{
   )
 }
 
+
 const Login = ({navigation}) => {
+  const [org, setOrg] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [username, setUsername] = useState(null)
+  const [password, setPassword] = useState(null)
+
+  const handleLogin =()=>{
+    LoginUser({'username':username, 'password':password}, org,callback, setLoading)
+    // navigation.navigate('dashboard')
+  }
+// console.log(username)
+
+  const callback =(res)=>{
+    console.log(res)
+  }
+
   return (
-    <SafeAreaView >
+    <SafeAreaView style={tw`pt-4`} >
       {/* <ModalTemplate body={<OwingWidget/>} /> */}
-      <Image style={tw`mx-auto my-8`} source={require('../images/Logo/r8Logo.png')}/>
+      <Image style={tw`mx-auto my-8 h-16 w-16`} source={require('../images/Logo/rel88.png')}/>
       <View style={tw`mx-10`}>
          <Text style={tw`text-base font-bold`}>Login</Text>
-          <Text>Input details to register</Text>
+          <Text>Input details to Login</Text>
       </View>
        
         <View style={tw`mt-3 mx-7 py-6 bg-white  shadow-sm rounded-3xl px-5`}>
           
           <View>
               <View style={tw`my-3 border-b`}>
+                <Text>Organization Name</Text>
+                <TextInput
+                placeholder='Organization Name'
+                style={tw`py-2`}
+                onChangeText={(text)=>setOrg(text)}
+                />
+              </View>
+              <View style={tw`my-3 border-b`}>
                 <Text>Username</Text>
                 <TextInput
                 placeholder='username'
                 style={tw`py-2`}
+                onChangeText={(text)=>setUsername(text)}
                 />
               </View>
               <View style={tw`my-3 border-b`}>
@@ -66,13 +93,13 @@ const Login = ({navigation}) => {
                 placeholder='Pasword'
                 style={tw`py-2`}
                 secureTextEntry={true}
+                onChangeText={(text)=>setPassword(text)}
                 />
               </View>
           </View>
           <View style={tw`my-3`}>
-            <RoundedButton 
-              text='Login'
-              pressed={()=>navigation.navigate('dashboard')}
+            <RoundedButton text='Login'
+              pressed={()=>handleLogin()}
             />
           </View>
           <TouchableOpacity onPress={()=>navigation.navigate('forgotPassword')}> 

@@ -13,12 +13,16 @@ const Onboarding = (props) => {
                 <Image style={tw`h-full`} source={props.image}/>
             </View>
             <View style={tw`pt-2`}>
-                <Image style={tw`mx-auto`} source={require('../../images/onboarding/r8.png')}/>
+                <Image style={tw`mx-auto h-6 w-6`} source={require('../../images/Logo/rel88.png')}/>
             </View>
             
             <View style={tw`flex mx-auto pb-1 px-7 `}>
                 <Text style={tw`flex mx-auto py-2 text-lg font-bold text-purple-800`}>{props.title}</Text>
-                <Text style={tw`flex mx-auto py-2 text-center text-black`}>{props.body}</Text>
+                { props.bodyComponent ?
+                props.bodyComponent :
+                <Text style={tw`flex mx-auto py-2 text-justify text-black`}>{props.body}</Text>
+                
+                }
             </View>
 
             <View style={tw` absolute bottom-0 px-3 w-full`}>

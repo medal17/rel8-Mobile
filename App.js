@@ -48,6 +48,7 @@ import Minutes from './pages/minutes';
 import Notifications from './pages/Notification';
 import Profile from './pages/Profile/profile';
 import EditProfile from './pages/Profile/EditProfile';
+import About from './pages/about';
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator();
@@ -139,6 +140,8 @@ export default function App() {
         <Stack.Screen name='view-member' component={ViewMember}/>
         <Stack.Screen name='profile' component={Profile}/>
         <Stack.Screen name='editProfile' component={EditProfile}/>
+        <Stack.Screen name='about' component={About}/>
+
 
         <Stack.Screen name='dashboard'>
         {()=>(

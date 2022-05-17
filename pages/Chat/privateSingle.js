@@ -49,7 +49,7 @@ const PrivateSingle = ({navigation}) => {
                 )}
         />
         </KeyboardAvoidingView>
-        <KeyboardAvoidingView style={tw`absolute bottom-2`} behavior='position'>
+        <KeyboardAvoidingView style={tw`absolute bg-white bottom-0 left-1 w-full`} behavior='position'>
             <MessageField/> 
         </KeyboardAvoidingView>
     </SafeAreaView>
