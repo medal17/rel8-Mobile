@@ -204,3 +204,76 @@ export const GetGallery = async(status,callback)=>{
 
     }
 }
+
+
+// /tenant/extras/ticketview/
+// Generate Ticket
+export const GenerateTicket = async(status,callback, data, showModal)=>{
+    try {
+        const response = await api.post(`tenant/${localStorage.getItem('org_name')}/tenant/extras/ticketview/`, data)
+       
+        if (response.status==200) {
+            callback(response);
+        } else {
+        //   console.log(response.status)
+        //   callback(response.status)
+            showModal(false)
+        alert(response.message)
+        }
+    } catch (error) {
+        showModal(false)
+        alert(error.message)
+        console.error(error)
+        // setLoading(false)
+
+    }
+}
+
+// /tenant/auth/ManageMemberValidation/
+// Get Validation Fields
+export const ValidationFields = async(callback, org_name, data)=>{
+    try {
+        const response = data ? await api.post(`tenant/${org_name}/tenant/auth/ManageMemberValidation/`, data)
+        : await api.get(`tenant/${org_name}/tenant/auth/ManageMemberValidation/`)
+       
+        if (response.status==200) {
+            callback(response);
+            // console.log(response)
+        } else {
+        //   console.log(response.status)
+        //   callback(response.status)
+            // showModal(false)
+        alert(response.message)
+        }
+    } catch (error) {
+        // showModal(false)
+        alert(error.message)
+        console.error(error)
+        // setLoading(false)
+
+    }
+}
+
+
+// Create 
+
+export const CreateUser = async(data, org_name,callback)=>{
+    // console.log(org_name)
+    try {
+        const response = await api.post(`tenant/${org_name}/tenant/auth/ManageMemberValidation/create_member/`, data)
+       
+        if (response.status==200) {
+            callback(response);
+        } else {
+          console.log(response)
+        //   callback(response)
+        }
+    } catch (error) {
+        alert(error.data.data)
+        console.error(error)
+        // setLoading(false)
+        console.log(error.status)
+
+    }
+}
+

@@ -1,5 +1,5 @@
 import { View, SafeAreaView,Text, FlatList, TextInput, TouchableOpacity, Pressable } from 'react-native'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import tw from 'tailwind-react-native-classnames'
 import NewsCard from '../../components/News/NewsCard'
 import Feather from 'react-native-vector-icons/Feather'
@@ -10,6 +10,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TobBar from '../../components/topBar'
 import National from './national'
 import Member from './member'
+import { GetEvents } from '../../connection/user.actions'
 
 const Events = ({navigation}) => {
   const [selectedIndex, setSelectedIndex] = useState(0)
@@ -22,6 +23,14 @@ const Stack = createNativeStackNavigator()
         {id:4,title: 'Lorem ipsum dolor sit amet, ', body:'(Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices varius Mauris ultrices varius.....', picture:require('../../images/onboarding/phone.png')},
         // {id:5,title: 'Lorem ipsum dolor sit amet, ', body:'(Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices varius Mauris ultrices varius.....', picture:require('../../images/onboarding/phone.png')},
       ]
+
+      // useEffect(()=>{
+      //   GetEvents(false, callback)
+      // },[])
+
+      // const callback =(res)=>{
+      //   console.log(res)
+      // }
 
       const handleSelect =(index)=>{
         if(index==0){

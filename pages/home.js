@@ -62,7 +62,7 @@ const Home = ({navigation, route}) => {
 
     useEffect(()=>{
       GetNews(callback)
-    },[])
+    },[news])
 
     const likeNews=(data) =>{
       LikeDisLikeNews({id: data.id, like:'true', dislike:'false'})
