@@ -1,5 +1,5 @@
 import { View, Text, TextInput, FlatList,SafeAreaView, ScrollView, Image, StatusBar, Pressable } from 'react-native'
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import tw from 'tailwind-react-native-classnames'
 import Ionicon from 'react-native-vector-icons/Ionicons'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
@@ -7,8 +7,11 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import NewsCard from '../components/News/NewsCard'
 import TobBar from '../components/topBar'
 import TodoList from '../components/committee/todoList'
+import { GetNews, GetPublications, LikeDisLikeNews } from '../connection/user.actions'
 
 const Home = ({navigation, route}) => {
+
+  const [news, setNews] = useState(null)
   const data =[
     {id:1,title: 'Lorem ipsum dolor sit amet, ', body:'(Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices varius Mauris ultrices varius.....', picture:require('../images/onboarding/phone.png')},
     {id:2,title: 'Lorem ipsum dolor sit amet, ', body:'(Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices varius Mauris ultrices varius.....', picture:require('../images/onboarding/phone.png')},
@@ -57,6 +60,19 @@ const Home = ({navigation, route}) => {
     )
     }
 
+    useEffect(()=>{
+      GetNews(callback)
+    },[news])
+
+    const likeNews=(data) =>{
+      LikeDisLikeNews({id: data.id, like:'true', dislike:'false'})
+    }
+
+    const callback=(res)=>{
+      setNews(res.data.data)
+      // console.log(res.data.data.map(e=>e))
+    }
+
 
   return (
     <SafeAreaView style={tw`mx-3`}>
@@ -86,7 +102,7 @@ const Home = ({navigation, route}) => {
       {/* <View> */}
         
         <FlatList
-            data={data}
+            data={news}
             keyExtractor={ (item, index) => item.id }
             // contentContainerStyle={styles.container}
             numColumns={2}
@@ -111,9 +127,12 @@ const Home = ({navigation, route}) => {
                   
                   <NewsCard 
                         image={item.picture}
-                        head={item.title}
+                        head={item.name}
                         body={item.body}
                         navigation = {navigation}
+                        isLiked={item.likes}
+                        pressLike={()=>likeNews(item)}
+                        pressDisLike={()=>alert('like')}
                         to='viewNews'
                   />
                   )}/>

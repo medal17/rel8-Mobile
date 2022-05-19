@@ -1,10 +1,11 @@
 import { NavigationAction } from '@react-navigation/native';
 import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import localStorage from 'react-native-sync-localstorage'
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
-const URL = 'https://rel8backend.herokuapp.com/'
+const URL = 'http://rel8backend.herokuapp.com/'
 // const navigation = useNavigation()
 
 const instance = axios.create({
@@ -12,9 +13,9 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use((config) => {
-
-  const token = AsyncStorage.getItem('token');
-  config.headers.Authorization = token ? `Bearer ${token}` : null;
+// alert(token)
+  const token = localStorage.getItem('token');
+  config.headers.Authorization = token ? `Token ${token}` : null;
   
   return config;
 });

@@ -4,23 +4,33 @@ import tw from 'tailwind-react-native-classnames';
 import { useNavigation } from '@react-navigation/native';
 import RoundedButton from '../button/RoundedButton';
 import Ionicon from 'react-native-vector-icons/Ionicons'
+import { GenerateTicket } from '../../connection/user.actions';
 
 export default function SupportChat(props) {
 
     const [status, setStatus] = useState(null)
+    const [title, setTitle] = useState(null)
+    const [body, setBody] = useState(null)
 
 const cancel=()=>{
     // navigation.goBack()
     props.setVisible(false)
 }
 
+const callback =()=>{
+    setStatus('sent')
+}
 const send=()=>{
     // navigation.goBack()
     // navigation.navigate('login')
+    if(title && body){
+    GenerateTicket(false, callback,{'heading':title, 'body':body},props.setVisible)
     setStatus('loading');
-    setTimeout(()=>{
-        setStatus('sent')
-    },3000);
+
+}
+    // setTimeout(()=>{
+    //     setStatus('sent')
+    // },3000);
     // props.setVisible(false)
 }
 
@@ -32,6 +42,7 @@ const Loading =()=>{
         </View>
     )
 }
+
 
 const Sent = () =>{
     return(
@@ -55,12 +66,16 @@ const Sent = () =>{
                 (status == 'sent' ?
                 <Sent/> 
                 :
+                (status =='error' ? 
+                <>
+                
+                </>:
                 <>
                 <View style={tw`border-b border-purple-300 my-3 mx-5`}>
                     <Text style={tw`font-bold text-lg text-center text-purple-500 py-2`}>Message Support</Text>
                 </View>
                 
-                <View style={tw`mb-1`}>
+                {/* <View style={tw`mb-1`}>
                     <Text style={tw`px-4 pt-3 pb-0.5 text-gray-700`}>Name</Text>
                     <TextInput
                         placeholder='Name'
@@ -74,6 +89,15 @@ const Sent = () =>{
                         placeholder='Email Address'
                         style={tw`border-b border-gray-500 p-1 mx-4`}
                     />
+                </View> */}
+
+                <View style={tw`mb-1`}>
+                    <Text style={tw`px-4 pt-3 pb-0.5 text-gray-700`}>Title</Text>
+                    <TextInput
+                        placeholder='Title'
+                        style={tw`border-b border-gray-500 p-1 mx-4`}
+                        onChangeText={(text)=>setTitle(text)}
+                    />
                 </View>
 
                 <View style={tw`mb-1`}>
@@ -82,6 +106,7 @@ const Sent = () =>{
                         placeholder='Message'
                         numberOfLines={3}
                         multiline={true}
+                        onChangeText={(text)=>setBody(text)}
                         style={tw`border rounded-md h-16 border-gray-400 p-1 mx-4`}
                     />
                 </View>
@@ -94,7 +119,7 @@ const Sent = () =>{
                         <Text style={tw`my-auto`}>Cancel</Text>
                     </Pressable>
                 </View>
-                </>)}
+                </>))}
             </View>
             {/* }
         /> */}
