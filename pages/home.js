@@ -61,7 +61,11 @@ const Home = ({navigation, route}) => {
     }
 
     useEffect(()=>{
+      setTimeout(
+          function() {
       GetNews(callback)
+            
+          }, 1500);
     },[news])
 
     const likeNews=(data) =>{

@@ -56,7 +56,7 @@ const News = ({navigation}) => {
                 ({item}) => (
                 //   <Pressable style={tw`w-1/2`}>
                   <NewsCard 
-                    image={item.picture}
+                    image={item.image}
                     head={item.name}
                     body={item.body}
                     navigation={navigation}

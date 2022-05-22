@@ -6,10 +6,12 @@ import Ionicon from 'react-native-vector-icons/Ionicons'
 
 const ExcoCard = (props) => {
     const [isLiked, setIsLiked] = useState(false)
-  return (
+  console.log(props.item)
+    return (
     <Pressable onPress={()=>props.navigation.navigate(props.to)} style={{width:'48%', marginVertical:9,marginHorizontal:5}}>
-    
-        <Image style={tw`w-full h-40  rounded-2xl`} resizeMode='cover' resizeMethod='resize' source={props.image}/>
+    { !props.image &&
+        <Image style={tw`w-full h-40  rounded-2xl`} resizeMode='cover' resizeMethod='resize' source={require('../../images/onboarding/guy.png')}/>
+        }
         {/* <View style={[tw`flex-row justify-end -mt-8 py-1 px-1`,{backgroundColor:'rgba(0, 0, 0, .3)'}]}>
             <FontAwesome name='commenting-o' style={tw`px-4 text-white`} size={20}/>
             { isLiked ?
@@ -19,8 +21,9 @@ const ExcoCard = (props) => {
         <Text style={tw`font-bold text-base pt-2`}>{props.head}</Text>
         <Text style={tw`font-bold text-center text-gray-500 py-1`}>portfolio - {props.portfolio}</Text>
         <Text style={tw`font-bold pb-1`} numberOfLines={1}>{props.company}</Text>
+        {props.body &&
         <Text style={tw`text-justify text-xs`}>{props.body < 50 ? props.body : props.body.substr(0,49)+'...'}</Text>
-        
+        }
     </Pressable>
   )
 }
