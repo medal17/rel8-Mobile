@@ -9,7 +9,7 @@ const NewsCard = (props) => {
   return (
     <Pressable onPress={()=>props.navigation.navigate(props.to,{type:props.type})} style={{width:'48%', marginVertical:9,marginHorizontal:5}}>
     
-        { props.picture ?<Image defaultSource={require('../../images/onboarding/phone.png')} style={tw`w-full h-20  rounded-t-2xl`} resizeMode='cover' resizeMethod='resize' source={props.image}/>
+        { props.image ?<Image  style={tw`w-full h-20  rounded-t-2xl`} resizeMode='cover' resizeMethod='resize' source={{uri:props.image}}/>
         : 
         <View style={tw`w-full h-20 bg-purple-100 rounded-t-xl`}>
           <Ionicon name='image' style={tw`text-center text-4xl text-purple-300 mt-2`}/>  

@@ -170,10 +170,11 @@ export const GetEvents = async(status,callback)=>{
 
 export const GetMyDues = async(status,callback)=>{
     try {
-        const response = await api.get(`tenant/${localStorage.getItem('org_name')}/tenant/dues/AdminManageDue/due_list_and_owning_members/`)
+        const response = await api.get(`tenant/${localStorage.getItem('org_name')}/tenant/dues/memberdue/`)
        
         if (response.status==200) {
             callback(response);
+            // console.log(response)
         } else {
           console.log(response.data.status)
           callback(response.data)
@@ -212,17 +213,18 @@ export const GenerateTicket = async(status,callback, data, showModal)=>{
     try {
         const response = await api.post(`tenant/${localStorage.getItem('org_name')}/tenant/extras/ticketview/`, data)
        
-        if (response.status==200) {
+        if (response.status==201) {
             callback(response);
+            // console.log(response)
         } else {
         //   console.log(response.status)
         //   callback(response.status)
             showModal(false)
-        alert(response.message)
+        alert(response.status)
         }
     } catch (error) {
         showModal(false)
-        alert(error.message)
+        alert(error.error)
         console.error(error)
         // setLoading(false)
 
@@ -257,23 +259,121 @@ export const ValidationFields = async(callback, org_name, data)=>{
 
 // Create 
 
-export const CreateUser = async(data, org_name,callback)=>{
+export const CreateUser = async(data, org_name,callback, setLoader)=>{
     // console.log(org_name)
     try {
         const response = await api.post(`tenant/${org_name}/tenant/auth/ManageMemberValidation/create_member/`, data)
        
         if (response.status==200) {
             callback(response);
+            // setLoader(false)
         } else {
+            setLoader(false)
+            alert(response)
           console.log(response)
         //   callback(response)
         }
     } catch (error) {
-        alert(error.data.data)
+        setLoader(false)
+        alert(error)
         console.error(error)
         // setLoading(false)
-        console.log(error.status)
+        console.log(error)
 
     }
 }
 
+
+// /tenant/faq/faq/members_view_faq/
+//Get FAQ
+export const GetFAQ = async(status,callback)=>{
+    try {
+        const response = await api.get(`tenant/${localStorage.getItem('org_name')}/tenant/faq/faq/members_view_faq/`)
+       
+        if (response.status==200) {
+            callback(response);
+        } else {
+          console.log(response.status)
+          callback(response.status)
+        }
+    } catch (error) {
+        console.error(error)
+        // setLoading(false)
+
+    }
+}
+
+// user/memberlist-info/get_all_members/
+//Get Members
+export const GetMembers = async(status,callback)=>{
+    try {
+        const response = await api.get(`tenant/${localStorage.getItem('org_name')}/tenant/user/memberlist-info/get_all_members/`)
+       
+        if (response.status==200) {
+            callback(response);
+        } else {
+          console.log(response.status)
+          callback(response.status)
+        }
+    } catch (error) {
+        console.error(error)
+        // setLoading(false)
+
+    }
+}
+
+// user/memberlist-info/get_all_exco/
+//Get Events
+export const GetExcos = async(status,callback)=>{
+    try {
+        const response = await api.get(`tenant/${localStorage.getItem('org_name')}/tenant/user/memberlist-info/get_all_exco/`)
+       
+        if (response.status==200) {
+            callback(response);
+        } else {
+          console.log(response.status)
+          callback(response.status)
+        }
+    } catch (error) {
+        console.error(error)
+        // setLoading(false)
+
+    }
+}
+
+//Get Events
+export const GetElections = async(status,callback)=>{
+    try {
+        const response = await api.get(`tenant/${localStorage.getItem('org_name')}/tenant/election/adminmanageballotbox/list_of_elections/`)
+       
+        if (response.status==200) {
+            callback(response);
+        } else {
+          console.log(response.status)
+          callback(response.status)
+        }
+    } catch (error) {
+        console.error(error)
+        // setLoading(false)
+
+    }
+}
+
+// /user/memberlist-info/my_profile/
+// Get Profile
+export const GetProfile = async(status,callback)=>{
+    try {
+        const response = await api.get(`tenant/${localStorage.getItem('org_name')}/tenant/user/memberlist-info/my_profile/`)
+       
+        if (response.status==200) {
+            callback(response);
+        } else {
+          console.log(response.status)
+          callback(response.status)
+        }
+    } catch (error) {
+        console.error(error)
+        // setLoading(false)
+
+    }
+}

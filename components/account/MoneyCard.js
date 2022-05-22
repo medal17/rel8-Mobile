@@ -9,7 +9,7 @@ export const MoneyCard =(props)=>{
             <View style={tw`flex-row justify-between`}>
                 <Text style={tw`my-auto`}>{props.date}</Text>
                 <Text style={tw`my-auto`}>{props.amount}</Text>
-                {props.type =='paid' ? 
+                {props.type ? 
                 <View style={tw`w-20`}>
                     <RoundedButton text='Reciept'/>
                 </View> :

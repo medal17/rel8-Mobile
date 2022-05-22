@@ -9,7 +9,7 @@ import Ionicon from 'react-native-vector-icons/Ionicons'
 import tw from 'tailwind-react-native-classnames'
 import RoundedButton from '../../components/button/RoundedButton'
 
-export default function EditProfile({navigation}) {
+export default function EditProfile({navigation, route}) {
 
     const [image, setImage] =useState(null);
 
@@ -26,6 +26,8 @@ export default function EditProfile({navigation}) {
       //   console.log(result.uri)
       }
     }
+
+    console.log(route.params.profileData)
 
   return (
     <SafeAreaView>
@@ -47,32 +49,35 @@ export default function EditProfile({navigation}) {
                         <Text style={[tw`font-bold mx-auto text-purple-800`]}>Click to change image</Text>
                 
                 </Pressable> 
-                <View style={tw` pt-3 py-1 mx-5`}>
+                {/* <View style={tw` pt-3 py-1 mx-5`}>
                     <Text style={tw`text-purple-900 pb-1`}>Name:</Text>
-                    {/* <Text>Bolaji Johnson</Text> */}
+                    
                     <TextInput
                         placeholder='Name'  
                         style={tw`border-b border-gray-600`}
                     />
-                </View>
+                </View> */}
+                { route.params.profileData.map(e=>e.memeber_info.map(e=>
                 <View style={tw` mt-3 py-1 mx-5`}>
-                    <Text style={tw`text-purple-900 pb-1`}>Email Address:</Text>
+                    <Text style={tw`text-purple-900 pb-1`}>{e.name}:</Text>
                     {/* <Text>BolajiJohnson@gmail.com </Text> */}
                     <TextInput
-                        placeholder='Email Address'  
+                    defaultValue={e.value}
+                        placeholder={e.value}  
                         style={tw`border-b border-gray-600`}
                     />
-                </View>
+                </View>))}
 
-                <View style={tw` mt-3  py-1 mx-5`}>
+                {/* <View style={tw` mt-3  py-1 mx-5`}>
                     <Text style={tw`text-purple-900 pb-1`}>Address:</Text>
                     <Text>No 20, Kings Avenue, Ikoyi, Lagos.</Text>
                     <TextInput
+                    
                         placeholder='Address'  
                         style={tw`border-b border-gray-600`}
                     />
-                </View>
-
+                </View> */}
+{/* 
                 <View style={tw`flex-row w-full`}>
                     <View style={tw` mt-3 w-5/12 py-1 mx-5`}>
                         <Text style={tw`text-purple-900 pb-1`}>Department:</Text>
@@ -83,7 +88,7 @@ export default function EditProfile({navigation}) {
                     </View>
                     <View style={tw` mt-3 w-4/12 py-1 mx-5`}>
                         <Text style={tw`text-purple-900 pb-1`}>Year:</Text>
-                        {/* <Text>2019</Text> */}
+                       
                         <TextInput
                         placeholder='Year'  
                         style={tw`border-b border-gray-600`}
@@ -94,7 +99,7 @@ export default function EditProfile({navigation}) {
                 <View style={tw`flex-row w-full`}>
                     <View style={tw` mt-3 w-5/12 py-1 mx-5`}>
                         <Text style={tw`text-purple-900 pb-1`}>Occupation:</Text>
-                        {/* <Text>Accountant</Text> */}
+                        
                         <TextInput
                         placeholder='Account'  
                         style={tw`border-b border-gray-600`}
@@ -112,11 +117,7 @@ export default function EditProfile({navigation}) {
 
                 <View style={tw`w-11/12 mx-5 my-3`}>
                     <Text style={tw`text-purple-900 pb-1`}>Bio:</Text>
-                    {/* <Text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscin. ad 
-                    Lorem ipsum dolor sit amet, consectetur adipiscin. ad
-                    Lorem ipsum dolor sit amet, consectetur adipiscin. ad
-                    </Text> */}
+                   
                     <TextInput
                         placeholder='Bio'  
                         style={tw`border border-gray-600 px-2 py-1`}
@@ -133,8 +134,8 @@ export default function EditProfile({navigation}) {
                     <Image  style={tw`h-20 w-20 rounded-lg mx-auto`}  source={require('../../images/onboarding/phone.png')}/>
                     <Image  style={tw`h-20 w-20 rounded-lg mx-auto`}  source={require('../../images/onboarding/phone.png')}/>
                     <Image  style={tw`h-20 w-20 rounded-lg mx-auto`}  source={require('../../images/onboarding/phone.png')}/>
-                </View>
-                <View style={tw`h-20 w-20 border rounded-lg mx-5 my-2`}></View>
+                </View> */}
+                {/* <View style={tw`h-20 w-20 border rounded-lg mx-5 my-2`}></View> */}
 
                 <View style={tw`mt-4 mx-5`}>
                     <RoundedButton text='Update'/>

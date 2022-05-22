@@ -3,6 +3,8 @@ import React, {useEffect, useState} from 'react'
 import tw from 'tailwind-react-native-classnames'
 import RoundedButton from '../components/button/RoundedButton'
 import { CreateUser, ValidationFields } from '../connection/user.actions'
+import ModalTemplate from '../components/Modal'
+import Loading from '../components/Modal/Loading'
 
 const Register = ({navigation}) => {
   const [orgName, setOrgName] = useState(null)
@@ -11,6 +13,8 @@ const Register = ({navigation}) => {
   const [password, setPassword] = useState(null)
   const [validated, setValidated] = useState(false)
   const [fieldsData, setFieldsData] = useState([])
+  const[ visible, setVisible] =useState(false)
+  const[ success, setSuccess] =useState(false)
 
   const handleAddFieldData =(field,value)=>{
     console.log({[field] : value})
@@ -24,17 +28,22 @@ const Register = ({navigation}) => {
         ValidationFields(ValidateCallback, orgName, fieldsData)
 
       }else if(orgName && fields && validated){
-        CreateUser(fieldsData,orgName,createCallback)
+        setVisible(true)
+        CreateUser(fieldsData,orgName,createCallback, setVisible)
       }
   }
 
   const ValidateCallback =(res)=>{
-    // console.log(res)
+    console.log(res.data.data)
     setValidated(true)
+    res.data.data.map(e=>
+      setFieldsData(e.user)
+      )
   }
 
   const createCallback =(res)=>{
-    console.log(res)
+    // console.log(res.data.data)
+    setSuccess(true)
   }
   const callback=(res)=>{
     console.log(res.data.data)
@@ -47,6 +56,8 @@ const Register = ({navigation}) => {
 
   return (
     <View style={tw`pt-4`}>
+      <ModalTemplate visible={visible} body={<Loading setVisible={setVisible} isSuccess={success}/>}/>
+
       <Image style={tw`mx-auto my-8 h-16 w-16`} source={require('../images/Logo/rel88.png')}/>
       <View style={tw`mx-10`}>
          <Text style={tw`text-base font-bold`}>Register</Text>
@@ -56,35 +67,24 @@ const Register = ({navigation}) => {
         <View style={tw`mt-3 mx-7 py-4 bg-white shadow-sm rounded-3xl px-5`}>
           
           <View>
-            {/* <View style={tw`flex-row justify-between`}>
-              <View style={tw`my-1 w-5/12 border-b`}>
-                <Text>First Name</Text>
-                <TextInput
-                placeholder='First Name'
-                />
-              </View>
-              <View style={tw`my-1 w-5/12 border-b`}>
-                <Text>Last Name</Text>
-                <TextInput
-                placeholder='Last Name'
-                />
-              </View>
-            </View> */}
+            
             {!validated && !fields &&
               <View style={tw`my-2 border-b`}>
-                <Text>Organization Name</Text>
+                <Text style={tw`pb-2`}>Organization Name</Text>
                 <TextInput
                 placeholder='Organization Name'
                 onChangeText={(text)=>setOrgName(text)}
+                style={tw`pb-2`}
                 />
             </View>}
 
            { !validated && fields &&
            fields.map(field=>
-            <View style={tw`my-2 border-b`}>
-                <Text>{field}</Text>
-                <TextInput
+            <View key={field} style={tw`my-2 border-b`}>
                 
+                <Text style={tw`pb-2`}>{field}</Text>
+                <TextInput
+                style={tw`pb-2`}
                 placeholder={field}
                 onChangeText={(text)=>setFieldsData(  {...fieldsData, [field]:text})}
                 />
@@ -93,15 +93,17 @@ const Register = ({navigation}) => {
           { validated ?
             <View>
               <View style={tw`my-2 border-b`}>
-                <Text>Email Address</Text>
+                <Text style={tw`pb-2`}>Email Address</Text>
                 <TextInput
+                style={tw`pb-2`}
                 placeholder='email Address'
                 onChangeText={(text)=>setFieldsData(  {...fieldsData, 'rel8Email':text})}
                 />
               </View>
               <View style={tw`my-3 border-b`}>
-                <Text>Password</Text>
+                <Text style={tw`pb-2`}>Password</Text>
                 <TextInput
+                style={tw`pb-2`}
                 placeholder='Pasword'
                 onChangeText={(text)=>setFieldsData(  {...fieldsData, 'password':text})}
 

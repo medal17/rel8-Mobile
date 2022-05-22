@@ -26,11 +26,13 @@ const MyAccount = ({navigation}) => {
 
     const handlePressed =(value) =>{
         if(value==1){
+            setSelected(1)
             navigation.navigate('outstanding')
-            setSelected(value)
+            
         }else{
+            setSelected(0)
             navigation.navigate('paid')
-            setSelected(value)
+            
         }
     }
     

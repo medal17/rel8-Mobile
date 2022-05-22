@@ -20,7 +20,7 @@ const Publication = ({navigation}) => {
 
       useEffect(()=>{
         GetPublications(false, callback)
-      }, [])
+      }, [data])
 
       const callback=(res)=>{
         console.log(res.data.data)
@@ -54,7 +54,7 @@ const Publication = ({navigation}) => {
             renderItem={
                 ({item}) => (
                   <NewsCard 
-                    image={item.picture}
+                    image={item.image}
                     head={item.name}
                     body={item.body}
                     navigation={navigation}
